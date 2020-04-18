@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Player from './components/SoccerPlayers';
+import './App.css';
 
 class App extends React.Component {
   constructor() {
