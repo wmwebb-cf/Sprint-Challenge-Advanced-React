@@ -22,17 +22,20 @@ class App extends React.Component {
     )
   }
 
+  const [darkMode, setDarkMode] = useDarker(false);
+
   handleClick() {
-    this.setState(state => ({
-      isToggleOn: !state.isToggleOn
-    }));
+    const toggleMode = e => {
+      e.preventDefault();
+      setDarkMode(!darkMode);
+    }
   }
 
   render () {
     return (
       <div className="App">
         <h1>All The Players</h1>
-        <button>Make me dark!</button>
+        <button onClick={handleClick} className={darkMode ? 'toggle toggled' : 'toggle'}>Make me dark!</button>
         {this.state.soccerplayers.map(item => (
           <Player player={item} name={item.name} country={item.country} searches={item.searches} key={item.id} />))}
       </div>
