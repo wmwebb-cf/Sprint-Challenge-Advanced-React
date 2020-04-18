@@ -13,7 +13,6 @@ class App extends React.Component {
   componentDidMount() {
     axios.get('http://localhost:5000/api/players').then(
       (response) => {
-        //console.log(response)
         const players = response.data;
         this.setState({ soccerplayers: players })
       }
@@ -23,7 +22,9 @@ class App extends React.Component {
   render () {
     return (
       <div className="App">
-      
+        <h1>All The Players</h1>
+        {this.state.soccerplayers.map(item => (
+          <Player player={item} name={item.name} country={item.country} searches={item.searches} key={item.id} />))}
       </div>
     )
   }
