@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import axios from 'axios';
 import Player from './components/SoccerPlayers';
 import { useDarker } from './hooks/useDarker';
@@ -22,24 +21,27 @@ class App extends React.Component {
     )
   }
 
-  const [darkMode, setDarkMode] = useDarker(false);
+  handleClick = e => {
+    e.preventDefault();
+    //alert('Button clicked!');
 
-  handleClick() {
-    const toggleMode = e => {
-      e.preventDefault();
-      setDarkMode(!darkMode);
-    }
+    useDarker(true);
+
   }
 
   render () {
     return (
       <div className="App">
         <h1>All The Players</h1>
-        <button onClick={handleClick} className={darkMode ? 'toggle toggled' : 'toggle'}>Make me dark!</button>
+        <button onClick={this.handleClick}>Dark UI</button>
+        <div>
         {this.state.soccerplayers.map(item => (
-          <Player player={item} name={item.name} country={item.country} searches={item.searches} key={item.id} />))}
+          <Player player={item} name={item.name} country={item.country} searches={item.searches} key={item.id}></Player> ))}
+        </div>
+        
+        
       </div>
-    )
+    ) 
   }
 }
 

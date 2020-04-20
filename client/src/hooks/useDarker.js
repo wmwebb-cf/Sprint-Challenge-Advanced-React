@@ -1,18 +1,11 @@
-import { useEffect } from 'react';
-import { useLocalStorage } from './useLocalStorage';
-
 export const useDarker = (key) => {
 
-    const [darkened, setDarkened] = useLocalStorage('darkened', key);
-    useEffect(() => {
-        const body = document.querySelector('body');
-        if(darkened === true){
-            body.classList.add('dark-mode');
-        } else {
-            body.classList.remove('dark-mode');
-        }
-    }, [darkened]
-    )
+    const body = document.querySelector('body');
+    //body.style.color = 'red';
+    if(key === true){
+        body.classList.add('dark-mode');
+    } else {
+        body.classList.remove('dark-mode');
+    }
 
-    return [darkened, setDarkened];
-}
+} 
