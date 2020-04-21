@@ -5,9 +5,9 @@
 button {
   padding: 10px 20px;
   font-size: larger;
-  border-color: blueviolet;
+  border: solid 3px blueviolet;
   border-radius: 10px;
-  
+  outline: none;
 }
 .card {
   border-radius: 10px;
